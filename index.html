@@ -16,91 +16,126 @@
     <header>
         <h1 class="text-center bg-warning">Weather Dashboard</h1>
     </header>
+    
     <main role="main">
+        <!--Entire contents-->
         <div class="d-flex flex-nowrap bg-light">
-
+            <!--Section for the forecast for the next 5 days-->
             <section class="order-1 w-75 d-flex flex-column">
                 <section class="order-1 border border-3 rounded-3 p-2 mb-3 ">
-                    <h2 class="text-center mb-4">Five Day Forecast</h2>
+                    <h2 class="text-center" id="currCity">Location</h2>
+                    <h3 class="text-center mb-4">Five Day Forecast</h3>
+                    <!--div class separates each card with equal distance-->
                     <div class="d-flex flex-row justify-content-around">
+                        <!--First card-->
+                        <!--Each card will update upon the user searching for a city-->
                         <div class="card order-1" style="width: 15rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                                <!--This h5 will update to 1 day after the current day-->
+                                <h5 class="card-title" id="dayOne">Day 1</h5>
+                                <!--Will show an icon indicating the type of weather such as cloudy or sunny-->
+                                <img id="cardOneIcon"/>
+                                <!--Will show this specific day's temperature-->
+                                <p id="cardOneTemp">
+                                    Temp:
+                                </p>
+                                <!--Will show this specific day's humidity-->
+                                <p id="cardOneHumidity">
+                                    Humidity:
+                                </p>
                             </div>
                         </div>
-
+                        <!--Second card-->
                         <div class="card order-2" style="width: 15rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                                <!--This h5 will update to 2 days after the current day-->
+                                <h5 class="card-title" id="dayTwo">Day 2</h5>
+                                <img id="cardTwoIcon"/>
+                                <p id="cardTwoTemp">
+                                    Temp:
+                                </p>
+                                <p id="cardTwoHumidity">
+                                    Humidity:
+                                </p>
                             </div>
                         </div>
-
+                        <!--Third Card-->
                         <div class="card order-3" style="width: 15rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                                <!--This h5 will update to 3 days after the current day-->
+                                <h5 class="card-title" id="dayThree">Day 3</h5>
+                                <img id="cardThreeIcon"/>
+                                <p id="cardThreeTemp">
+                                    Temp:
+                                </p>
+                                <p id="cardThreeHumidity">
+                                    Humidity:
+                                </p>
                             </div>
                         </div>
-
+                        <!--Fourth Card-->
                         <div class="card order-4" style="width: 15rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                                <!--This h5 will update to 4 days after the current day-->
+                                <h5 class="card-title" id="dayFour">Day 4</h5>
+                                <img id="cardFourIcon"/>
+                                <p id="cardFourTemp">
+                                    Temp:
+                                </p>
+                                <p id="cardFourHumidity">
+                                    Humidity:
+                                </p>
                             </div>
                         </div>
-
+                        <!--Fifth Card-->
                         <div class="card order-5" style="width: 15rem;">
                             <div class="card-body">
-                                <h5 class="card-title">Card title</h5>
-                                <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6>
-                                <p class="card-text">Some quick example text to build on the card title and make up the
-                                    bulk of the card's content.</p>
-                                <a href="#" class="card-link">Card link</a>
-                                <a href="#" class="card-link">Another link</a>
+                                <!--This h5 will update to 5 days after the current day-->
+                                <h5 class="card-title" id="dayFive">Day 5</h5>
+                                <img id="cardFiveIcon"/>
+                                <p id="cardFiveTemp">
+                                    Temp:
+                                </p>
+                                <p id="cardFiveHumidity">
+                                    Humidity:
+                                </p>
                             </div>
                         </div>
                     </div>
                 </section>
 
+                <!--This section will show the current day's weather statistics-->
                 <section class="order-2 border border-3 rounded-3 p-2">
-                    <h2 class="text-center">City Weather</h2>
+                    <!--This h2 will update to the current day-->
+                    <h2 class="text-center" id="currentDay">Today</h2>
+                    <!--Centers the current day's statistics-->
                     <div class="centerP">
-                        <p id="temp">
+                        <!--Statistics will update once the user searches for a city-->
+                        <p id="currTemp">
                             Temperature:
                         </p>
-                        <p id="humidity">
+                        <p id="currHumidity">
                             Humidity:
                         </p>
-                        <p id="wind">
+                        <p id="currWind">
                             Wind Speed:
                         </p>
-                        <p id="uv">
+                        <p id="currUV">
                             UV Index:
                         </p>
                     </div>
                 </section>
             </section>
 
+            <!--This section will allow the user to search for a new city-->
             <section class="order-2 p-3 w-25 bg-secondary">
                 <h2 class="text-center text-white">Search for a City</h2>
+
+                <label for="searchCity" class="text-white">City:</label>
+                <input type="text" class="w-75" id="searchCity">
+                <button type="button" class="btn btn-primary btn-sm" id="searchCity">Submit</button>
+                <!--Previously searched cities will be stored in a list-->
+                <ul id="previousCities"></ul>
             </section>
         </div>
     </main>

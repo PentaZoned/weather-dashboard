@@ -2,6 +2,7 @@ body {
     background-color: #F5F5DC;
 }
 
+/* styles the current day's statistics */
 .centerP {
     width: 300px;
     margin: 0px auto;
