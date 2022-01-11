@@ -24,7 +24,7 @@
             <section class="order-1 w-75 d-flex flex-column">
                 <section class="order-1 border border-3 rounded-3 p-2 mb-3 ">
                     <h2 class="text-center" id="currCity">Location</h2>
-                    <h3 class="text-center mb-4">Five Day Forecast</h3>
+                    <h4 class="text-center mb-4">Five Day Forecast</h4>
                     <!--div class separates each card with equal distance-->
                     <div class="d-flex flex-row justify-content-around">
                         <!--First card-->
@@ -34,7 +34,7 @@
                                 <!--This h5 will update to 1 day after the current day-->
                                 <h5 class="card-title" id="dayOne">Day 1</h5>
                                 <!--Will show an icon indicating the type of weather such as cloudy or sunny-->
-                                <img id="cardOneIcon"/>
+                                <img id="cardOneIcon" />
                                 <!--Will show this specific day's temperature-->
                                 <p id="cardOneTemp">
                                     Temp:
@@ -50,7 +50,7 @@
                             <div class="card-body">
                                 <!--This h5 will update to 2 days after the current day-->
                                 <h5 class="card-title" id="dayTwo">Day 2</h5>
-                                <img id="cardTwoIcon"/>
+                                <img id="cardTwoIcon" />
                                 <p id="cardTwoTemp">
                                     Temp:
                                 </p>
@@ -64,7 +64,7 @@
                             <div class="card-body">
                                 <!--This h5 will update to 3 days after the current day-->
                                 <h5 class="card-title" id="dayThree">Day 3</h5>
-                                <img id="cardThreeIcon"/>
+                                <img id="cardThreeIcon" />
                                 <p id="cardThreeTemp">
                                     Temp:
                                 </p>
@@ -78,7 +78,7 @@
                             <div class="card-body">
                                 <!--This h5 will update to 4 days after the current day-->
                                 <h5 class="card-title" id="dayFour">Day 4</h5>
-                                <img id="cardFourIcon"/>
+                                <img id="cardFourIcon" />
                                 <p id="cardFourTemp">
                                     Temp:
                                 </p>
@@ -92,7 +92,7 @@
                             <div class="card-body">
                                 <!--This h5 will update to 5 days after the current day-->
                                 <h5 class="card-title" id="dayFive">Day 5</h5>
-                                <img id="cardFiveIcon"/>
+                                <img id="cardFiveIcon" />
                                 <p id="cardFiveTemp">
                                     Temp:
                                 </p>
@@ -133,14 +133,15 @@
 
                 <label for="searchCity" class="text-white">City:</label>
                 <input type="text" class="w-75" id="inputCity">
-                <input type="submit" class="btn btn-primary btn-sm" id="searchCity"> <!--Button for submission-->
+                <input type="submit" class="btn btn-primary btn-sm" id="searchCity">
+                <!--Button for submission-->
                 <!--Previously searched cities will be stored in a list-->
                 <ul id="previousCities"></ul>
             </section>
         </div>
     </main>
 
-
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.27.0/moment.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js" type="text/javascript"></script>
     <script src="assets/JS/script.js"></script>
 </body>

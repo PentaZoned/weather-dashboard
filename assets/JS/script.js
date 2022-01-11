@@ -5,9 +5,9 @@ var APIKey = "366a2e7bcfd3223a70d54d9bb00665b2";
 var long;
 var lat;
 var city;
-
-// This event will occur when the user enters a city name
-// uses Geocoding API to get the latitude and longitude of the city
+var state;
+// This event will occur when the user enters a city name and presses submit
+// uses Geocoding API to get the latitude and longitude of the city, will be used for the second ajax request
 $("#searchCity").click(function () {
     // stores the city name into a local variable
     city = $("#inputCity").val();
@@ -16,7 +16,7 @@ $("#searchCity").click(function () {
     // appends the query parameters to make a query URL
     var queryURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
 
-
+    // sends a request to the api to retrieve the data we want
     $.ajax({
         url: queryURL,
         method: "GET"
@@ -28,25 +28,63 @@ $("#searchCity").click(function () {
         // This is necessary for the other API calls to function
         long = response[0].lon;
         lat = response[0].lat;
+
+        // assigns the city's state to a variable
+        state = response[0].state;
+        // changes the location title to the city and state
+        $("#currCity").text(city + ", " + state);
+
         // checks for any errors
         console.log(long);
         console.log(lat);
+
         // This function will get the weather statistics of the current day
         getWeather();
     });
 });
 
 // Function retrieves the current weather statistics of the city and displays it on the DOM
-// Also retrieves the humidity and weather icons for the next 5 days
+// Retrieves the humidity, temperature and weather icons for the next 5 days
 function getWeather() {
     // One Call API used: https://openweathermap.org/api/one-call-api
     var queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" 
     + long + "&units=imperial" + "&appid=" + APIKey;
+
+    // Sends a request to the api to retrieve the data we want
     $.ajax({
         url: queryURL2,
         method: "GET"
     }).then(function (response) {
+        // Displays the contents in our console
         console.log(response);
+
+        // Replaces the today title with the current date and time
+        var todayReplace = moment().format('dddd, MMMM Do, YYYY, h:mm:ss a');
+
+        // Takes the Unix timestamp at the 'daytime' of that day from retrieved data and assign it to a variable
+        var dayOneReplace = response.daily[1].dt;
+        var dayTwoReplace = response.daily[2].dt;
+        var dayThreeReplace = response.daily[3].dt;
+        var dayFourReplace = response.daily[4].dt;
+        var dayFiveReplace = response.daily[5].dt;
+
+        // Checks if at least one variable works
+        console.log(dayOneReplace);
+
+        // Formats the Unix timestamp into a readable format
+        dayOneReplace = moment(dayOneReplace, "X").format('dddd, MMM Do');
+        dayTwoReplace = moment(dayTwoReplace, "X").format('dddd, MMM Do');
+        dayThreeReplace = moment(dayThreeReplace, "X").format('dddd, MMM Do');
+        dayFourReplace = moment(dayFourReplace, "X").format('dddd, MMM Do');
+        dayFiveReplace = moment(dayFiveReplace, "X").format('dddd, MMM Do');
+
+        // Replaces all of the title text with the formatted time
+        $("#currentDay").text(todayReplace);
+        $("#dayOne").text(dayOneReplace);
+        $("#dayTwo").text(dayTwoReplace);
+        $("#dayThree").text(dayThreeReplace);
+        $("#dayFour").text(dayFourReplace);
+        $("#dayFive").text(dayFiveReplace);
 
         // assigns the current day's temperatures found in the response to the corresponding html element
         $("#currTemp").text("Temperature: " + response.current.temp + " \u00B0 F");
