@@ -127,6 +127,7 @@ function getWeather() {
 
         // assigns weather icons based on the type of weather
         // daily[0] actually refers to today, so we start at daily[1] to reference the day after today
+        $("#currIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[0].weather[0].icon + ".png");
         $("#cardOneIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[1].weather[0].icon + ".png");
         $("#cardTwoIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[2].weather[0].icon + ".png");
         $("#cardThreeIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[3].weather[0].icon + ".png");

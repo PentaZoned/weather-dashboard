@@ -14,7 +14,7 @@
 
 <body>
     <header>
-        <h1 class="text-center bg-warning">Weather Dashboard</h1>
+        <h1 class="text-center cardBG">Weather Dashboard</h1>
     </header>
 
     <main role="main">
@@ -23,13 +23,14 @@
             <!--Section for presenting the weather data-->
             <section class="order-1 w-75 d-flex flex-column">
                 <!--This section will show the current day's weather statistics-->
-                <section class="order-1 border border-3 rounded-3 p-2 mb-3">
+                <section class="order-1 border border-3 rounded-3 p-2 mb-3 cardBG">
                     <h2 class="text-center" id="currCity">Location</h2>
                     <!--This h2 will update to the current day-->
                     <h4 class="text-center" id="currentDay">Today</h4>
                     <!--Centers the current day's statistics-->
                     <div class="centerP">
                         <!--Statistics will update once the user searches for a city-->
+                        <img id="currIcon"/>
                         <p id="currTemp">
                             Temperature:
                         </p>
@@ -53,7 +54,7 @@
                         <!--First card-->
                         <!--Each card will update upon the user searching for a city-->
                         <div class="card order-1" style="width: 15rem;">
-                            <div class="card-body">
+                            <div class="card-body cardBG">
                                 <!--This h5 will update to 1 day after the current day-->
                                 <h5 class="card-title" id="dayOne">Day 1</h5>
                                 <!--Will show an icon indicating the type of weather such as cloudy or sunny-->
@@ -70,7 +71,7 @@
                         </div>
                         <!--Second card-->
                         <div class="card order-2" style="width: 15rem;">
-                            <div class="card-body">
+                            <div class="card-body cardBG">
                                 <!--This h5 will update to 2 days after the current day-->
                                 <h5 class="card-title" id="dayTwo">Day 2</h5>
                                 <img id="cardTwoIcon" />
@@ -84,7 +85,7 @@
                         </div>
                         <!--Third Card-->
                         <div class="card order-3" style="width: 15rem;">
-                            <div class="card-body">
+                            <div class="card-body cardBG">
                                 <!--This h5 will update to 3 days after the current day-->
                                 <h5 class="card-title" id="dayThree">Day 3</h5>
                                 <img id="cardThreeIcon" />
@@ -98,7 +99,7 @@
                         </div>
                         <!--Fourth Card-->
                         <div class="card order-4" style="width: 15rem;">
-                            <div class="card-body">
+                            <div class="card-body cardBG">
                                 <!--This h5 will update to 4 days after the current day-->
                                 <h5 class="card-title" id="dayFour">Day 4</h5>
                                 <img id="cardFourIcon" />
@@ -112,7 +113,7 @@
                         </div>
                         <!--Fifth Card-->
                         <div class="card order-5" style="width: 15rem;">
-                            <div class="card-body">
+                            <div class="card-body cardBG">
                                 <!--This h5 will update to 5 days after the current day-->
                                 <h5 class="card-title" id="dayFive">Day 5</h5>
                                 <img id="cardFiveIcon" />

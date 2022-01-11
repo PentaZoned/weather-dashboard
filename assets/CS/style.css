@@ -7,3 +7,7 @@ body {
     width: 165px;
     margin: 0px auto;
 }
+
+.cardBG {
+    background-color: #DCDCF5;
+}
