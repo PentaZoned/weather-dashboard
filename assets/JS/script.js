@@ -37,6 +37,7 @@ $("#searchCity").click(function () {
 });
 
 // Function retrieves the current weather statistics of the city and displays it on the DOM
+// Also retrieves the humidity and weather icons for the next 5 days
 function getWeather() {
     // One Call API used: https://openweathermap.org/api/one-call-api
     var queryURL2 = "https://api.openweathermap.org/data/2.5/onecall?lat=" + lat + "&lon=" 
@@ -53,7 +54,14 @@ function getWeather() {
         $("#currWind").text("Wind Speed: " + response.current.wind_speed + " MPH");
         $("#currUV").text("UV Index: " + response.current.uvi);
 
-        // assigns a weather icon based on the type of weather
+        // assigns the temperature of the next 5 days to the cards
+        $("#cardOneTemp").text("Temp: " + response.daily[0].feels_like.day + " \u00B0 F");
+        $("#cardTwoTemp").text("Temp: " + response.daily[1].feels_like.day + " \u00B0 F");
+        $("#cardThreeTemp").text("Temp: " + response.daily[2].feels_like.day + " \u00B0 F");
+        $("#cardFourTemp").text("Temp: " + response.daily[3].feels_like.day + " \u00B0 F");
+        $("#cardFiveTemp").text("Temp: " + response.daily[4].feels_like.day + " \u00B0 F");
+
+        // assigns weather icons based on the type of weather
         /*
         $("#cardOneIcon").attr("src", response.daily[0].weather[0].icon + ".png");
         $("#cardTwoIcon").attr("src", response.daily[0].weather[0].icon + ".png");
@@ -62,13 +70,12 @@ function getWeather() {
         $("#cardFiveIcon").attr("src", response.daily[0].weather[0].icon + ".png");
         */
 
-        // assigns the humidity of the next 5 days to the corresponding 
-        $("#cardOneHumidity").text("Humidity: " + response.daily[0].humidity + " \u00B0 F");
-        $("#cardTwoHumidity").text("Humidity: " + response.daily[1].humidity + " \u00B0 F");
-        $("#cardThreeHumidity").text("Humidity: " + response.daily[2].humidity + " \u00B0 F");
-        $("#cardFourHumidity").text("Humidity: " + response.daily[3].humidity + " \u00B0 F");
-        $("#cardFiveHumidity").text("Humidity: " + response.daily[4].humidity + " \u00B0 F");
+        // assigns the humidity of the next 5 days to the cards
+        $("#cardOneHumidity").text("Humidity: " + response.daily[0].humidity + "%");
+        $("#cardTwoHumidity").text("Humidity: " + response.daily[1].humidity + "%");
+        $("#cardThreeHumidity").text("Humidity: " + response.daily[2].humidity + "%");
+        $("#cardFourHumidity").text("Humidity: " + response.daily[3].humidity + "%");
+        $("#cardFiveHumidity").text("Humidity: " + response.daily[4].humidity + "%");
 
     })
-}
-
+};
