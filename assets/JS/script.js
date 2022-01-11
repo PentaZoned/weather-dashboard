@@ -12,6 +12,7 @@ $("#searchCity").click(function () {
     // stores the city name into a local variable
     city = $("#inputCity").val();
 
+
     // API used: https://openweathermap.org/api/geocoding-api
     // appends the query parameters to make a query URL
     var queryURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
@@ -29,11 +30,15 @@ $("#searchCity").click(function () {
         long = response[0].lon;
         lat = response[0].lat;
 
+        // This will enable proper capitalization of city name by taking the stored name from the API
+        // user can submit a city name in all lower case, and the output would be capitalized
+        city = response[0].name;
         // assigns the city's state to a variable
         state = response[0].state;
         // changes the location title to the city and state
         $("#currCity").text(city + ", " + state);
 
+        appendList();
         // checks for any errors
         console.log(long);
         console.log(lat);
@@ -117,3 +122,10 @@ function getWeather() {
 
     })
 };
+
+function appendList() {
+    var newListItem = document.createElement("LI");
+    newListItem.innerHTML = city + ", " + state;
+    newListItem.className = "list-group-item";
+    $("#previousCities").prepend(newListItem);
+}
