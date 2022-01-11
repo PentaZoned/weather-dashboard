@@ -1,51 +1,59 @@
 // API key
 var APIKey = "366a2e7bcfd3223a70d54d9bb00665b2";
 
-// longitude, latitude of the city
-var long;
-var lat;
-var city;
-var state;
+var long;   // longitude
+var lat;    // latitude
+var city;   // city name
+var state;  // state name
+
 // This event will occur when the user enters a city name and presses submit
 // uses Geocoding API to get the latitude and longitude of the city, will be used for the second ajax request
 $("#searchCity").click(function () {
     // stores the city name into a local variable
     city = $("#inputCity").val();
+    // resets input text after it has been stored
+    $("#inputCity").val("");
 
+    // checks if the user entered a city name
+    // if city is null then the user will be alerted
+    // if there is an input, process the ajax call
+    if(!city){
+        alert("Please enter a city.");
+    } else {
+        // API used: https://openweathermap.org/api/geocoding-api
+        // appends the query parameters to make a query URL
+        var queryURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
 
-    // API used: https://openweathermap.org/api/geocoding-api
-    // appends the query parameters to make a query URL
-    var queryURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
+        // sends a request to the api to retrieve the data we want
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            // necessary to view the received data and work around its structure
+            console.log(response);
 
-    // sends a request to the api to retrieve the data we want
-    $.ajax({
-        url: queryURL,
-        method: "GET"
-    }).then(function (response) {
-        // necessary to view the received data and work around its structure
-        console.log(response);
+            // assign the received data into usable variables
+            // The longitude and latitude is necessary for the other API calls to function
+            long = response[0].lon;
+            lat = response[0].lat;
 
-        // assign the received data into usable variables
-        // This is necessary for the other API calls to function
-        long = response[0].lon;
-        lat = response[0].lat;
+            // This will enable proper capitalization of city name by taking the stored name from the API
+            // user can submit a city name in all lower case, and the output would be capitalized
+            city = response[0].name;
+            // assigns the city's state to a variable
+            state = response[0].state;
+            // changes the location title to the city and state
+            $("#currCity").text(city + ", " + state);
 
-        // This will enable proper capitalization of city name by taking the stored name from the API
-        // user can submit a city name in all lower case, and the output would be capitalized
-        city = response[0].name;
-        // assigns the city's state to a variable
-        state = response[0].state;
-        // changes the location title to the city and state
-        $("#currCity").text(city + ", " + state);
+            appendList();
+            // checks for any errors
+            console.log(long);
+            console.log(lat);
 
-        appendList();
-        // checks for any errors
-        console.log(long);
-        console.log(lat);
-
-        // This function will get the weather statistics of the current day
-        getWeather();
-    });
+            // This function will get the weather statistics of the current day
+            getWeather();
+        });
+    }
 });
 
 // Function retrieves the current weather statistics of the city and displays it on the DOM

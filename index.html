@@ -20,10 +20,32 @@
     <main role="main">
         <!--Entire contents-->
         <div class="d-flex flex-nowrap bg-light">
-            <!--Section for the forecast for the next 5 days-->
+            <!--Section for presenting the weather data-->
             <section class="order-1 w-75 d-flex flex-column">
-                <section class="order-1 border border-3 rounded-3 p-2 mb-3 ">
+                <!--This section will show the current day's weather statistics-->
+                <section class="order-1 border border-3 rounded-3 p-2 mb-3">
                     <h2 class="text-center" id="currCity">Location</h2>
+                    <!--This h2 will update to the current day-->
+                    <h4 class="text-center" id="currentDay">Today</h4>
+                    <!--Centers the current day's statistics-->
+                    <div class="centerP">
+                        <!--Statistics will update once the user searches for a city-->
+                        <p id="currTemp">
+                            Temperature:
+                        </p>
+                        <p id="currHumidity">
+                            Humidity:
+                        </p>
+                        <p id="currWind">
+                            Wind Speed:
+                        </p>
+                        <p id="currUV">
+                            UV Index:
+                        </p>
+                    </div>
+                </section>
+
+                <section class="order-2 border border-3 rounded-3 p-2">
                     <h4 class="text-center mb-4">Five Day Forecast</h4>
                     <!--div class separates each card with equal distance-->
                     <div class="d-flex flex-row justify-content-around">
@@ -101,28 +123,6 @@
                                 </p>
                             </div>
                         </div>
-                    </div>
-                </section>
-
-                <!--This section will show the current day's weather statistics-->
-                <section class="order-2 border border-3 rounded-3 p-2">
-                    <!--This h2 will update to the current day-->
-                    <h2 class="text-center" id="currentDay">Today</h2>
-                    <!--Centers the current day's statistics-->
-                    <div class="centerP">
-                        <!--Statistics will update once the user searches for a city-->
-                        <p id="currTemp">
-                            Temperature:
-                        </p>
-                        <p id="currHumidity">
-                            Humidity:
-                        </p>
-                        <p id="currWind">
-                            Wind Speed:
-                        </p>
-                        <p id="currUV">
-                            UV Index:
-                        </p>
                     </div>
                 </section>
             </section>
