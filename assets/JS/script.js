@@ -126,13 +126,13 @@ function getWeather() {
         $("#cardFiveTemp").text("Temp: " + response.daily[4].feels_like.day + " \u00B0 F");
 
         // assigns weather icons based on the type of weather
-        /*
-        $("#cardOneIcon").attr("src", response.daily[0].weather[0].icon + ".png");
-        $("#cardTwoIcon").attr("src", response.daily[0].weather[0].icon + ".png");
-        $("#cardThreeIcon").attr("src", response.daily[0].weather[0].icon + ".png");
-        $("#cardFourIcon").attr("src", response.daily[0].weather[0].icon + ".png");
-        $("#cardFiveIcon").attr("src", response.daily[0].weather[0].icon + ".png");
-        */
+        // daily[0] actually refers to today, so we start at daily[1] to reference the day after today
+        $("#cardOneIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[1].weather[0].icon + ".png");
+        $("#cardTwoIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[2].weather[0].icon + ".png");
+        $("#cardThreeIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[3].weather[0].icon + ".png");
+        $("#cardFourIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[4].weather[0].icon + ".png");
+        $("#cardFiveIcon").attr("src", "http://openweathermap.org/img/wn/" + response.daily[5].weather[0].icon + ".png");
+
 
         // assigns the humidity of the next 5 days to the cards
         $("#cardOneHumidity").text("Humidity: " + response.daily[0].humidity + "%");
@@ -144,9 +144,20 @@ function getWeather() {
     })
 };
 
+// This function will create a new list element with the city and state and append it to an unordered list below the search bar
 function appendList() {
-    var newListItem = document.createElement("LI");
-    newListItem.innerHTML = city + ", " + state;
-    newListItem.className = "list-group-item";
-    $("#previousCities").prepend(newListItem);
+    var newListItem = document.createElement("LI"); // create a new variable referencing a list element
+    newListItem.innerHTML = city + ", " + state;    // adds the contents to the list element
+    newListItem.className = "list-group-item";      // adds styling to each list item
+    $("#previousCities").prepend(newListItem);      // adds the new list item at the beginning of the entire list
 }
+
+/*
+function saveCities() {
+    var list = $("#previousCities");
+    for(var i = 0; i < list.length; i++) {
+
+    }
+}
+
+*/
