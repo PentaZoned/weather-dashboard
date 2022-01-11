@@ -103,7 +103,20 @@ function getWeather() {
         $("#currTemp").text("Temperature: " + response.current.temp + " \u00B0 F");
         $("#currHumidity").text("Humidity: " + response.current.humidity + "%");
         $("#currWind").text("Wind Speed: " + response.current.wind_speed + " MPH");
-        $("#currUV").text("UV Index: " + response.current.uvi);
+        $("#currUV").text(" " + response.current.uvi);
+
+        // This if statement will compare the uv index to a standard and color the background according to the levels
+        // The uv index scale does not have negative numbers
+        if(response.current.uvi >= 0 && response.current.uvi < 3) {
+            // If the uv index is equal or greater than 0 and less than 3, apply a green background to this value
+            $("#currUV").addClass("bg-success text-white p-2");
+        } else if (response.current.uvi >= 3 && response.current.uvi < 8) {
+            // If the uv index is equal or greater than 3 and less than 8, apply a green background to this value
+            $("#currUV").className = "bg-warning text-white p-2";
+        } else {
+            // the remaining scenarios should be numbers equal or higher than 8
+            $("#currUV").className = "bg-danger text-white p-2";
+        }
 
         // assigns the temperature of the next 5 days to the cards
         $("#cardOneTemp").text("Temp: " + response.daily[0].feels_like.day + " \u00B0 F");
