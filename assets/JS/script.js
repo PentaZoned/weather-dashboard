@@ -4,11 +4,21 @@ var APIKey = "366a2e7bcfd3223a70d54d9bb00665b2";
 var long;   // longitude
 var lat;    // latitude
 var city;   // city name
-var state;  // state name
+
+// to store cities for localstorage
+var cities = {
+    city: undefined,
+    lat: undefined,
+    long: undefined
+};
+
+var newList = [];
+
 
 // This event will occur when the user enters a city name and presses submit
 // uses Geocoding API to get the latitude and longitude of the city, will be used for the second ajax request
-$("#searchCity").click(function () {
+$("#searchCity").click(searching);
+function searching() {
     // stores the city name into a local variable
     city = $("#inputCity").val();
     // resets input text after it has been stored
@@ -20,41 +30,10 @@ $("#searchCity").click(function () {
     if(!city){
         alert("Please enter a city.");
     } else {
-        // API used: https://openweathermap.org/api/geocoding-api
-        // appends the query parameters to make a query URL
-        var queryURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
-
-        // sends a request to the api to retrieve the data we want
-        $.ajax({
-            url: queryURL,
-            method: "GET"
-        }).then(function (response) {
-            // necessary to view the received data and work around its structure
-            console.log(response);
-
-            // assign the received data into usable variables
-            // The longitude and latitude is necessary for the other API calls to function
-            long = response[0].lon;
-            lat = response[0].lat;
-
-            // This will enable proper capitalization of city name by taking the stored name from the API
-            // user can submit a city name in all lower case, and the output would be capitalized
-            city = response[0].name;
-            // assigns the city's state to a variable
-            state = response[0].state;
-            // changes the location title to the city and state
-            $("#currCity").text(city + ", " + state);
-
-            appendList();
-            // checks for any errors
-            console.log(long);
-            console.log(lat);
-
-            // This function will get the weather statistics of the current day
-            getWeather();
-        });
-    }
-});
+        apiCall();
+        appendList();
+    };
+};
 
 // Function retrieves the current weather statistics of the city and displays it on the DOM
 // Retrieves the humidity, temperature and weather icons for the next 5 days
@@ -147,18 +126,80 @@ function getWeather() {
 
 // This function will create a new list element with the city and state and append it to an unordered list below the search bar
 function appendList() {
-    var newListItem = document.createElement("LI"); // create a new variable referencing a list element
-    newListItem.innerHTML = city + ", " + state;    // adds the contents to the list element
-    newListItem.className = "list-group-item";      // adds styling to each list item
+    var newListItem = document.createElement("button"); // create a new variable referencing a list element
+    newListItem.innerHTML = city;   // adds the contents to the list element
+    newListItem.className = "list-group-item btn btn-primary";      // adds styling to each list item
+    newList.push(city);
     $("#previousCities").prepend(newListItem);      // adds the new list item at the beginning of the entire list
+    storeCities();
 }
 
-/*
-function saveCities() {
-    var list = $("#previousCities");
-    for(var i = 0; i < list.length; i++) {
+// Displays the previous cities at reload
+function displayCities() {
+    $("#previousCities").html("");
+    
+    for(var i = 0; i < newList.length; i++) {
+        var newListing = newList[i];
+        console.log("NEWLIST: " + newList);
+        var li = document.createElement("button");
+        li.textContent = newListing;
+        li.className = "list-group-item btn btn-primary";
 
+        $("#previousCities").prepend(li);
+        storeCities();
     }
+    city = newListing;
+    $("button").click(apiCall);
 }
 
-*/
+function apiCall() {
+        // API used: https://openweathermap.org/api/geocoding-api
+        // appends the query parameters to make a query URL
+        var queryURL = "https://api.openweathermap.org/geo/1.0/direct?q=" + city + "&limit=1&appid=" + APIKey;
+
+        // sends a request to the api to retrieve the data we want
+        $.ajax({
+            url: queryURL,
+            method: "GET"
+        }).then(function (response) {
+            // necessary to view the received data and work around its structure
+            console.log(response);
+
+            // assign the received data into usable variables
+            // The longitude and latitude is necessary for the other API calls to function
+            long = response[0].lon;
+            lat = response[0].lat;
+
+            // This will enable proper capitalization of city name by taking the stored name from the API
+            // user can submit a city name in all lower case, and the output would be capitalized
+            city = response[0].name;
+            // changes the location title to the city and state
+            $("#currCity").text(city);
+            
+            // checks for any errors
+            console.log(long);
+            console.log(lat);
+            console.log(city);
+
+            // This function will get the weather statistics of the current day
+            getWeather();
+        })
+}
+
+// parses the stored information and sets a function to display it
+function init() {
+    var storedCities = JSON.parse(localStorage.getItem("newList"));
+
+    if(storedCities !== null) {
+        newList = storedCities;
+    }
+    displayCities();
+}
+
+// sets information into localstorage
+function storeCities() {
+
+    localStorage.setItem("newList", JSON.stringify(newList));
+}
+
+init();
