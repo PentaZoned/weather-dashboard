@@ -22,11 +22,11 @@ When the user loads the webpage, they are presented with a blank forecast since 
 
 ## Screenshots and Gif
 
-* [Demonstration Gif]()
-* [Screenshot 1]()
-* [Screenshot 2]()
-* [Screenshot 3]()
-* [Screenshot 4]()
+* [Demonstration Gif](https://github.com/PentaZoned/weather-dashboard/blob/main/assets/images/gif/Weather%20Dashboard.gif)
+* [Screenshot 1](https://github.com/PentaZoned/weather-dashboard/blob/main/assets/images/screenshots/screenshot1.jpg)
+* [Screenshot 2](https://github.com/PentaZoned/weather-dashboard/blob/main/assets/images/screenshots/screenshot2.jpg)
+* [Screenshot 3](https://github.com/PentaZoned/weather-dashboard/blob/main/assets/images/screenshots/screenshot3.jpg)
+* [Screenshot 4](https://github.com/PentaZoned/weather-dashboard/blob/main/assets/images/screenshots/screenshot4.jpg)
 
 ## Authors
 
