@@ -2,10 +2,6 @@
 
 The objective of this application is to make full use of third-party APIs by making requests with URLs with specific parameters to the server to retrieve data to present to users.
 
-The specific topic is a weather dashboard that allows users to view the weather forecast of the current day and the next 5 days. They will be able to plan their future events like going to a hike or planning a vacation.
-
-When the user loads the webpage, they are presented with a blank forecast since there is no selected city. To search the weather for a specific city, they are able to click on the input box that is located on the right side. When they search for a city, they are presented with the current day's weather statistics including temperature, humidity, wind speed, UV index, and even a weather icon. They are also presented with the temperature, humidity, and weather icon of the next 5 days after the current day. The UV index is color-coded to have its background color change depending on the UV index scale. UV index between 0 and 3 will display a green background, between 3 and 8 will display a orange background, and a number above 8 will have a red background. The user will also be able to see a list of previously searched cities. They can click on any item on the list to view that city's current and future days displayed on the screen.
-
 ## Built With
 
 * [HTML](https://developer.mozilla.org/en-US/docs/Web/HTML)
@@ -23,10 +19,16 @@ When the user loads the webpage, they are presented with a blank forecast since 
 ## Screenshots and Gif
 
 * ![Demonstration Gif](https://github.com/PentaZoned/weather-dashboard/blob/main/assets/images/gif/Weather%20Dashboard.gif)
+
+Demonstration of user inputting a city and being shown weather information.
+
 * ![Screenshot 1](https://github.com/PentaZoned/weather-dashboard/blob/main/assets/images/screenshots/screenshot1.jpg)
-* ![Screenshot 2](https://github.com/PentaZoned/weather-dashboard/blob/main/assets/images/screenshots/screenshot2.jpg)
-* ![Screenshot 3](https://github.com/PentaZoned/weather-dashboard/blob/main/assets/images/screenshots/screenshot3.jpg)
+
+Default webpage layout without user interaction
+
 * ![Screenshot 4](https://github.com/PentaZoned/weather-dashboard/blob/main/assets/images/screenshots/screenshot4.jpg)
+
+Weather information displayed after user input
 
 ## Authors
 
