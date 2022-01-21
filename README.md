@@ -34,7 +34,7 @@ Weather information displayed after user input
 
 * **Bradley Le** 
 
-- [Link to Portfolio Site](https://pentazoned.github.io/portfolio-1/)
+- [Link to Portfolio Site](https://pentazoned.github.io/portfolio-v2/)
 - [Link to Github](https://github.com/PentaZoned)
 - [Link to LinkedIn](https://www.linkedin.com/in/bradley-le-/)
 
